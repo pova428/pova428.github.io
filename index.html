@@ -23,16 +23,27 @@
         data-type="standard">
     </div>
 
+    <h1>PT 2.5 - GOOGLE SIGN IN</h1>
+    <p>Pàgina preparada per afegir el OAuth 2.</p>
+
     <button
     id="boto-sortir"
     style="display:none;"
     onclick="signOut()">
     Desconnectar
     </button>
+    
+    <script>
+    function onSignIn() {
+        document.getElementById('boto-sortir').style.display = 'block';
+        document.querySelector('.g_id_signin').style.display = 'none';
+    }
 
-    <h1>PT 2.5 - GOOGLE SIGN IN</h1>
-    <p>Pàgina preparada per afegir el OAuth 2.</p>
-
+    function signOut() {
+        document.getElementById('boto-sortir').style.display = 'none';
+        document.querySelector('.g_id_signin').style.display = 'block';
+    }
+</script>
 </body>
 
 </html>

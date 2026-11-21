@@ -26,6 +26,10 @@
     <h1>PT 2.5 - GOOGLE SIGN IN</h1>
     <p>Pàgina preparada per afegir el OAuth 2.</p>
 
+    <h2 id="missatge-benvinguda" style="display:none;">
+    Missatge de benvinguda
+    </h2>
+
     <button
     id="boto-sortir"
     style="display:none;"
@@ -39,13 +43,22 @@
 
     console.log("ID Token: " + id_token);
 
+    const dades = JSON.parse(decodeURIComponent(escape(atob(
+        id_token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')
+    ))));
+
     document.getElementById('boto-sortir').style.display = 'block';
     document.querySelector('.g_id_signin').style.display = 'none';
-}
+
+    const missatge = document.getElementById('missatge-benvinguda');
+    missatge.textContent = 'Benvingut/da, ' + dades.name;
+    missatge.style.display = 'block';
+    }
 
     function signOut() {
         document.getElementById('boto-sortir').style.display = 'none';
         document.querySelector('.g_id_signin').style.display = 'block';
+        document.getElementById('missatge-benvinguda').style.display = 'none';
     }
 </script>
 </body>
